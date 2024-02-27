@@ -120,3 +120,31 @@ form label {
   border: 2px solid #cc2222;
   color: #cc2222;
 }
+
+ul {
+  width: 50%;
+  border-bottom: 2px solid #0f4a43;
+  padding: 0;
+}
+
+li {
+  font-size: 2vw;
+  list-style: none;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+li > a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #0f4a43;
+  font-size: 1.75vw;
+  padding: 7.5px 0;
+  min-width: 50vw;
+  text-align: center;
+  margin: 7.5px 0;
+}
+
+li > a:hover {
+  color: #63e8d8;
+}

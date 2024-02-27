@@ -7,4 +7,8 @@ module.exports = {
     const email = new Email({ project, variables, message });
     await email.save();
   },
+  getEmails: async () => {
+    const emails = await Email.find({}).lean();
+    return emails;
+  },
 };

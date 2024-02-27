@@ -26,4 +26,12 @@ module.exports = {
       res.render('pages/add', { info: null, error: error.message });
     }
   },
+  getAllEmails: async (req, res, next) => {
+    try {
+      const emails = await services.getEmails();
+      res.render('pages/emails', { emails });
+    } catch (error) {
+      next(error);
+    }
+  },
 };
