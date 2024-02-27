@@ -7,6 +7,7 @@ const Email = model(
       type: String,
       required: true,
       unique: true,
+      lowercase: true
     },
     variables: [
       {

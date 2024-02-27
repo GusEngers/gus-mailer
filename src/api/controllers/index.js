@@ -14,4 +14,12 @@ module.exports = {
       next(error);
     }
   },
+  sendEmailFromMe: async (req, res, next) => {
+    try {
+      await services.sendEmailFromMe(req.params.project, req.body, req.query.subject);
+      res.status(204).end();
+    } catch (error) {
+      next(error);
+    }
+  },
 };
