@@ -14,16 +14,26 @@ main {
 
 #home-title {
   font-size: 10vw;
+}
+
+#form-title {
+  font-size: 4vw;
+}
+
+#home-title,
+#form-title {
   text-align: center;
   text-wrap: wrap;
   margin-bottom: 0;
 }
 
-#home-title span:first-of-type {
+#home-title span:first-of-type,
+#form-title span:first-of-type {
   color: #2424c3;
 }
 
-#home-title span:last-of-type {
+#home-title span:last-of-type,
+#form-title span:last-of-type {
   color: #cc2222;
 }
 
@@ -44,4 +54,69 @@ main {
   color: #cc2222;
   cursor: pointer;
   border-color: #cc2222;
+}
+
+form {
+  background-color: #727272;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+form input,
+form textarea {
+  width: 80%;
+  font-size: 1.5vw;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 10vh;
+}
+
+form label {
+  color: #2424c3;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.button-form {
+  background-color: #179517;
+  text-align: center;
+  padding: 10px 0;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  margin: 5px 0 50px 0;
+  width: 50%;
+}
+
+.button-form:hover {
+  background-color: #4cd84c;
+  cursor: pointer;
+}
+
+.info,
+.error {
+  width: 50%;
+  font-size: 1.75vw;
+  margin: 10px 0;
+  padding: 10px 0;
+  text-align: center;
+  text-wrap: wrap;
+  background-color: #a1a1a1;
+  border-radius: 10px;
+}
+
+.info {
+  border: 2px solid #179517;
+  color: #179517;
+}
+
+.error {
+  border: 2px solid #cc2222;
+  color: #cc2222;
 }
