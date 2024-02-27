@@ -3,7 +3,7 @@
 module.exports = {
   homePage: (req, res, next) => {
     try {
-      res.render('pages/home', { title: 'Express-Server' });
+      res.render('pages/home');
     } catch (error) {
       next(error);
     }

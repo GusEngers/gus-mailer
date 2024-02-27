@@ -1,0 +1,47 @@
+html,
+body,
+main {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #a1a1a1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#home-title {
+  font-size: 10vw;
+  text-align: center;
+  text-wrap: wrap;
+  margin-bottom: 0;
+}
+
+#home-title span:first-of-type {
+  color: #2424c3;
+}
+
+#home-title span:last-of-type {
+  color: #cc2222;
+}
+
+.button-link {
+  text-decoration: none;
+  font-weight: bold;
+  border: 3px solid #2424c3;
+  color: #2424c3;
+  font-size: 2vw;
+  padding: 10px 0;
+  width: 30%;
+  text-align: center;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.button-link:hover {
+  color: #cc2222;
+  cursor: pointer;
+  border-color: #cc2222;
+}
