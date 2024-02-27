@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../components/head', { title: 'Correos | GusMailer'}) %>
+  </head>
+  <body>
+    <main>
+      <h1 id="form-title"><span>Gus</span><span>Mailer</span></h1>
+      <% if (emails.length) { %>
+        <ul>
+          <% emails.forEach((email) => { %>
+           <li><a href="/api/emails/<%= email._id %>"><%= email.project %></a></li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <p class="error">No hay correos añadidos</p>
+      <% } %>
+      <a href="/" class="button-link">Inicio</a>
+    </main>
+  </body>
+</html>

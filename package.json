@@ -7,16 +7,8 @@
     "start": "set NODE_ENV=production&& node index.js",
     "dev": "set NODE_ENV=development&& nodemon index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GusEngers/express-server.git"
-  },
   "author": "Gustavo Engers",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/GusEngers/express-server/issues"
-  },
-  "homepage": "https://github.com/GusEngers/express-server#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -24,7 +16,9 @@
     "express": "^4.18.2",
     "express-rate-limit": "^7.1.5",
     "helmet": "^7.1.0",
-    "morgan": "^1.10.0"
+    "mongoose": "^8.2.0",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.10"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

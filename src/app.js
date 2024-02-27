@@ -18,7 +18,7 @@ const app = express();
 // CONFIGURACIÓN PRINCIPAL DE LA APLICACIÓN
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'client', 'public')));
 app.use(morgan('dev'));
 app.use(helmet());
 
