@@ -25,4 +25,18 @@ module.exports = {
       html: message,
     });
   },
+  sendEmailFrom: async (project, body, email, subject = "Sin Asunto") => {
+    const email2 = await Email.findOne({ project: project.toLowerCase() }).lean();
+    if (!email2) throw new Error('Email not found');
+    let message = email2.message;
+    for (let variable of email2.variables) {
+      message = message.replace(`#${variable}#`, `${body[variable]}`);
+    }
+    await transporter.sendMail({
+      from: NODEMAILER_EMAIL,
+      to: email,
+      subject,
+      html: message,
+    });
+  }
 };

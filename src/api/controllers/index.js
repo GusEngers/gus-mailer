@@ -22,4 +22,13 @@ module.exports = {
       next(error);
     }
   },
+  sendEmailFrom: async (req, res, next) => {
+    try {
+      const email = req.body.email
+      await services.sendEmailFrom(req.params.project, req.body, email, req.query.subject);
+      res.status(204).end();
+    } catch (error) {
+      next(error);
+    }
+  },
 };
