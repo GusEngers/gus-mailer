@@ -1,5 +1,3 @@
-const ApiError = require('./error-class-api');
-
 require('dotenv').config();
 
 /**
@@ -14,6 +12,7 @@ module.exports = {
   DB_URI: process.env.DB_URI,
   PORT: process.env.PORT ?? '3000',
   MODE: !process.env.NODE_ENV ? process.env.NODE_ENV : process.env.NODE_ENV.toLowerCase(),
+  DB_URI: process.env.DB_URI,
 
   /* Métodos */
   get IS_DEVELOPMENT() {
@@ -22,4 +21,8 @@ module.exports = {
   get IS_PRODUCTION() {
     return this.MODE === this.PRODUCTION ? true : false;
   },
+
+  /* Nodemailer */
+  NODEMAILER_EMAIL: process.env.NODEMAILER_EMAIL,
+  NODEMAILER_PASSWORD: process.env.NODEMAILER_PASSWORD,
 };
