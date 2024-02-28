@@ -11,7 +11,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const { apiErrorHandler, clientErrorHandler } = require('./utils/error-handlers');
 const { notFoundApiHandler, notFoundClientHandler } = require('./utils/not-found-handlers');
-const limiterHandler = require('./utils/limiter-handler');
+// const limiterHandler = require('./utils/limiter-handler');
 
 const app = express();
 
@@ -27,7 +27,7 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/client/views');
 
 // RUTAS DEFINIDAS
-app.use('/api', cors(), limiterHandler, api, notFoundApiHandler, apiErrorHandler);
+app.use('/api', cors(), /*limiterHandler,*/ api, notFoundApiHandler, apiErrorHandler);
 app.use('/', client, notFoundClientHandler, clientErrorHandler);
 
 module.exports = app;
