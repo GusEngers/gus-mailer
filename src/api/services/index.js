@@ -1,42 +1,34 @@
 // SERVICIOS QUE SE EJECUTAN EN LOS CONTROLADORES DE RUTAS
-
-const { isObjectIdOrHexString } = require('mongoose');
+const { Recipient, EmailParams } = require('mailersend');
+const ApiError = require('../../utils/error-class-api');
 const Email = require('../models/email');
-const { transporter } = require('../../config/nodemailer');
-const { NODEMAILER_EMAIL } = require('../../utils/constants');
+const { email } = require('../../config/mailersend');
 
-module.exports = {
-  getEmail: async (id) => {
-    if (!isObjectIdOrHexString(id)) throw new Error('Invalid id');
-    const email = await Email.findById(id).lean();
-    return email;
-  },
-  sendEmailFromMe: async (project, body, subject = 'Sin Asunto') => {
-    const email = await Email.findOne({ project: project.toLowerCase() }).lean();
-    if (!email) throw new Error('Email not found');
-    let message = email.message;
-    for (let variable of email.variables) {
-      message = message.replace(`#${variable}#`, `${body[variable]}`);
-    }
-    await transporter.sendMail({
-      from: NODEMAILER_EMAIL,
-      to: NODEMAILER_EMAIL,
-      subject,
-      html: message,
-    });
-  },
-  sendEmailFrom: async (project, body, email, subject = "Sin Asunto") => {
-    const email2 = await Email.findOne({ project: project.toLowerCase() }).lean();
-    if (!email2) throw new Error('Email not found');
-    let message = email2.message;
-    for (let variable of email2.variables) {
-      message = message.replace(`#${variable}#`, `${body[variable]}`);
-    }
-    await transporter.sendMail({
-      from: NODEMAILER_EMAIL,
-      to: email,
-      subject,
-      html: message,
-    });
-  }
-};
+async function getListEmails() {
+  const emails = await Email.find({}).lean();
+  return emails;
+}
+
+async function sendEmailTemplate(templateId, recipient, subject, values = {}) {
+  const emailDB = await Email.findOne({ templateId }).lean();
+  if (!emailDB) throw new ApiError('Template email not found', 404);
+
+  const recipients = [new Recipient(recipient.email, recipient.name)];
+  let personalization = [
+    {
+      email: recipient.email,
+      data: values,
+    },
+  ];
+
+  const emailParams = new EmailParams()
+    .setFrom(email.__sender)
+    .setTo(recipients)
+    .setPersonalization(personalization)
+    .setTemplateId(emailDB.templateId)
+    .setSubject(subject);
+  const data = await email.sendEmail(emailParams);
+  if (!data) throw new ApiError('Error send email with template', 400);
+}
+
+module.exports = { getListEmails, sendEmailTemplate };

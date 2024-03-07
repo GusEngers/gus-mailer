@@ -7,17 +7,11 @@ const Email = model(
       type: String,
       required: true,
       unique: true,
-      lowercase: true
+      lowercase: true,
     },
-    variables: [
-      {
-        type: String,
-      },
-    ],
-    message: {
-      type: String,
-      required: true,
-    },
+    templateId: String,
+    variables: [String],
+    message: String,
   })
 );
 
