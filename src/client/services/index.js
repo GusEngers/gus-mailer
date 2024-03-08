@@ -3,8 +3,8 @@
 const Email = require('../../api/models/email');
 
 module.exports = {
-  postAddEmail: async ({ project, variables, message }) => {
-    const email = new Email({ project, variables, message });
+  postAddEmail: async ({ project, templateId,variables, message }) => {
+    const email = new Email({ project, templateId, variables, message });
     await email.save();
   },
   getEmails: async () => {

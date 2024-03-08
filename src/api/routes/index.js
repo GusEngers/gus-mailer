@@ -1,12 +1,11 @@
 const api = require('express').Router();
 
 // CONTROLADORES
-const { homeApi, getEmail, sendEmailFromMe, sendEmailFrom } = require('../controllers');
+const con = require('../controllers');
 
 // RUTAS PARA MANEJAR LAS SOLICITUDES DEL SERVIDOR
-api.get('/', homeApi);
-api.route('/emails/:id').get(getEmail);
-api.route('/send/:project').post(sendEmailFromMe);
-api.route('/send_external/:project').post(sendEmailFrom);
+api.route('/emails').get(con.getListEmailsController);
+api.route('/template/:templateId').post(con.sendEmailTemplateController);
+api.route('/message/:id').post(con.sendEmailMessageController);
 
 module.exports = api;
