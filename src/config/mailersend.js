@@ -20,7 +20,7 @@ class Email {
       .send(emailParams)
       .then(() => true)
       .catch((err) => {
-        console.log(`[EMAILSENDER-ERROR] Error: ${err.message}`);
+        console.log(`[EMAILSENDER-ERROR] Error:`, err.body.errors);
         return false;
       });
     return data;

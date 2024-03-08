@@ -5,6 +5,7 @@ const con = require('../controllers');
 
 // RUTAS PARA MANEJAR LAS SOLICITUDES DEL SERVIDOR
 api.route('/emails').get(con.getListEmailsController);
-api.route('/template/:template').post(con.sendEmailTemplateController);
+api.route('/template/:templateId').post(con.sendEmailTemplateController);
+api.route('/message/:id').post(con.sendEmailMessageController);
 
 module.exports = api;
